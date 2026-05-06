@@ -1,1 +1,7 @@
-<Solution />
+<Solution>
+  <Folder Name="/docs/" />
+  <Folder Name="/src/">
+    <Project Path="src/MeusPedidos.Domain/MeusPedidos.Domain.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
