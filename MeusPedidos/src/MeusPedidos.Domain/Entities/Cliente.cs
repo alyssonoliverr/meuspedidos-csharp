@@ -6,7 +6,7 @@ public class Cliente : Entity
 {
     public string Nome { get; protected set; } = string.Empty;
 
-  
+    // EF Core
     protected Cliente() { }
     public Cliente(string nome)
     {
