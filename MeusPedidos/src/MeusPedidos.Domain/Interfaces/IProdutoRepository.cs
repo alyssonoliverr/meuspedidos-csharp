@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Runtime.CompilerServices;
 
 namespace MeusPedidos.Domain.Interfaces;
 
-internal interface IProdutoRepository { }
+public interface IProdutoRepository
+{
+    Task AdicionarAsync(Produto produto, CancellationToken cancellationToken);
+    Task<Produto?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken);
+    Task AtualizarAsync(Produto produto, CancellationToken cancellationToken);
+}

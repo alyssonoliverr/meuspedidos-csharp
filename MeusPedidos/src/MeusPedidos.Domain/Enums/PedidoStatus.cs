@@ -4,5 +4,5 @@ public enum PedidoStatus
 {
     Aberta,
     Paga,
-    Cancelada
+    Cancelada,
 }

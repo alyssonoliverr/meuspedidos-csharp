@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/docs/" />
   <Folder Name="/src/">
+    <Project Path="src/MeusPedidos.Application/MeusPedidos.Application.csproj" Id="804bd429-9827-41d9-bcd1-cdb6650c8e72" />
     <Project Path="src/MeusPedidos.Domain/MeusPedidos.Domain.csproj" />
   </Folder>
   <Folder Name="/tests/" />
