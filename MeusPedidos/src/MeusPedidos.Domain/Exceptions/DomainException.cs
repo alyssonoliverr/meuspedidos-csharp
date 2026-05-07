@@ -1,4 +1,4 @@
-﻿namespace MeusPedidos.Domain.Entities;
+﻿namespace MeusPedidos.Domain.Exceptions;
 
 public class DomainException : Exception
 {

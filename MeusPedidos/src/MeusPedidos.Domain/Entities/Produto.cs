@@ -1,4 +1,5 @@
-﻿using MeusPedidos.Domain.Entities;
+﻿using MeusPedidos.Domain.Exceptions;
+using MeusPedidos.Domain.Entities;
 
 public class Produto : ActivableEntity
 {

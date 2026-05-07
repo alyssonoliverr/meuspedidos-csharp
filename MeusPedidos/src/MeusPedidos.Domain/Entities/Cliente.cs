@@ -1,4 +1,6 @@
-﻿namespace MeusPedidos.Domain.Entities;
+﻿using MeusPedidos.Domain.Exceptions;
+
+namespace MeusPedidos.Domain.Entities;
 
 public class Cliente : Entity
 {
