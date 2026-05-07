@@ -1,5 +1,3 @@
 ﻿namespace MeusPedidos.Domain.Entities;
 
-public class Produto
-{
-}
+public class Produto { }

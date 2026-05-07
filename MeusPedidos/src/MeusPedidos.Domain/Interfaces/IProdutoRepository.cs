@@ -4,6 +4,4 @@ using System.Text;
 
 namespace MeusPedidos.Domain.Interfaces;
 
-internal interface IProdutoRepository
-{
-}
+internal interface IProdutoRepository { }

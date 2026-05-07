@@ -1,5 +1,3 @@
 ﻿namespace MeusPedidos.Domain.Entities;
 
-internal class Pedido
-{
-}
+internal class Pedido { }

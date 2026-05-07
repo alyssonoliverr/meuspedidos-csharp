@@ -1,5 +1,3 @@
 ﻿namespace MeusPedidos.Domain.Enums;
 
-public enum PedidoStatus
-{
-}
+public enum PedidoStatus { }
