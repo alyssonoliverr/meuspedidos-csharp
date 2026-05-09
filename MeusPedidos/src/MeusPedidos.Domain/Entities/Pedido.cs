@@ -5,7 +5,6 @@ namespace MeusPedidos.Domain.Entities;
 
 public class Pedido : Entity
 {
-
     public Guid ClienteId { get; protected set; }
     public Guid FormaDePagamentoId { get; protected set; }
     public PedidoStatus Status { get; protected set; }
@@ -17,6 +16,7 @@ public class Pedido : Entity
     public DateTime DataHoraCriacao { get; protected set; } = DateTime.Now;
 
     protected Pedido() { }
+
     private Pedido(Guid clienteId, Guid formaDePagamentoId)
     {
         ClienteId = clienteId;
@@ -51,17 +51,20 @@ public class Pedido : Entity
             throw new DomainException("Desconto não pode ser maior que o total dos produtos.");
         ValorDesconto = valorDesconto;
     }
+
     public void Pagar()
     {
         ValidarEstadoParaAlteracao();
         Status = PedidoStatus.Paga;
     }
+
     public void Cancelar()
     {
         if (Status == PedidoStatus.Cancelada)
-            throw new DomainException("Pedido já está cancelado."); 
+            throw new DomainException("Pedido já está cancelado.");
         Status = PedidoStatus.Cancelada;
     }
+
     private void ValidarEstadoParaAlteracao()
     {
         if (Status != PedidoStatus.Aberta)

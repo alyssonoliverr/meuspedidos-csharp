@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MeusPedidos.Domain.Entities;
 
 namespace MeusPedidos.Domain.Interfaces;
 
-internal interface IClienteRepository { }
+public interface IClienteRepository
+{
+    Task AdicionarAsync(Cliente cliente, CancellationToken cancellationToken);
+    Task<Cliente?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken);
+    Task AtualizarAsync(Cliente cliente, CancellationToken cancellationToken);
+}

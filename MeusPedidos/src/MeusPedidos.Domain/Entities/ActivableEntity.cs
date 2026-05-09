@@ -1,10 +1,8 @@
-﻿
-namespace MeusPedidos.Domain.Entities;
+﻿namespace MeusPedidos.Domain.Entities;
 
-public abstract class ActivableEntity: Entity
+public abstract class ActivableEntity : Entity
 {
     public bool Ativo { get; protected set; } = true;
-
 
     public void Ativar() => Ativo = true;
 
