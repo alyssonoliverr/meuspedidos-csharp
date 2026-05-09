@@ -1,6 +1,4 @@
-﻿
-
-using MeusPedidos.Domain.Entities;
+﻿using MeusPedidos.Domain.Entities;
 using MeusPedidos.Domain.Interfaces;
 using MeusPedidos.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +14,14 @@ public class PedidoRepository : IPedidoRepository
         _context = context;
     }
 
-    public async Task<Pedido?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<Pedido?> ObterPorIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default
+    )
     {
-        return await _context.Pedidos
-            .Include(p => p.Itens)
+        return await _context
+            .Pedidos.Include(p => p.Itens)
             .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
-       
     }
 
     public async Task AdicionarAsync(Pedido pedido, CancellationToken cancellationToken = default)
@@ -30,7 +30,7 @@ public class PedidoRepository : IPedidoRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task AtualizarAsync(Pedido pedido, CancellationToken cancellationToken = default               )
+    public async Task AtualizarAsync(Pedido pedido, CancellationToken cancellationToken = default)
     {
         _context.Pedidos.Update(pedido);
         await _context.SaveChangesAsync();

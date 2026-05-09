@@ -1,6 +1,4 @@
-﻿
-
-using MeusPedidos.Domain.Entities;
+﻿using MeusPedidos.Domain.Entities;
 using MeusPedidos.Domain.Interfaces;
 
 namespace MeusPedidos.Application.UseCases.Pedidos.CriarPedido;
@@ -22,4 +20,3 @@ public class CriarPedidoHandler
         return pedido.Id;
     }
 }
-
