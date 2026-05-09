@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace MeusPedidos.Domain.Interfaces;
+﻿namespace MeusPedidos.Domain.Interfaces;
 
 public interface IProdutoRepository
 {

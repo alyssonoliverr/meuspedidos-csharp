@@ -16,8 +16,8 @@ public class PedidoConfiguration : IEntityTypeConfiguration<Pedido>
         builder.Property(p => p.ValorDesconto).HasColumnType("decimal(18,2)").IsRequired();
         builder.Ignore(p => p.ValorTotalProdutos);
         builder.Ignore(p => p.ValorTotal);
-        builder.Metadata.FindNavigation(nameof(Pedido.Itens))!
+        builder
+            .Metadata.FindNavigation(nameof(Pedido.Itens))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
-
     }
 }
