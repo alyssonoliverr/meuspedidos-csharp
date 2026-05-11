@@ -17,11 +17,10 @@ public class PedidosController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(
         CriarPedidoCommand command,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken
+    )
     {
-        var pedidoId = await _handler.Handle(
-            command,
-            cancellationToken);
+        var pedidoId = await _handler.Handle(command, cancellationToken);
 
         return Ok(pedidoId);
     }
