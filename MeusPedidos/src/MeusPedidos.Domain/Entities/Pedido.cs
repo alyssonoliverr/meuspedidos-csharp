@@ -12,8 +12,8 @@ public class Pedido : Entity
     public IReadOnlyCollection<ItemPedido> Itens => _itens;
     public decimal ValorTotalProdutos => _itens.Sum(x => x.ValorTotal);
     public decimal ValorDesconto { get; protected set; } = 0;
-    public Decimal ValorTotal => ValorTotalProdutos - ValorDesconto;
-    public DateTime DataHoraCriacao { get; protected set; } = DateTime.Now;
+    public decimal ValorTotal => ValorTotalProdutos - ValorDesconto;
+    public DateTime DataHoraCriacao { get; protected set; }
 
     protected Pedido() { }
 
@@ -22,7 +22,7 @@ public class Pedido : Entity
         ClienteId = clienteId;
         FormaDePagamentoId = formaDePagamentoId;
         Status = PedidoStatus.Aberta;
-        DataHoraCriacao = DateTime.Now;
+        DataHoraCriacao = DateTime.UtcNow;
     }
 
     public static Pedido Criar(Guid clienteId, Guid formaDePagamentoId)

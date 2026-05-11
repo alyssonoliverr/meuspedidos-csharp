@@ -6,7 +6,7 @@ namespace MeusPedidos.Infrastructure.Persistence;
 public class AppDbContext : DbContext
 {
     public DbSet<Cliente> Clientes { get; set; }
-    public DbSet<FormaDePagamento> FormasDePagamentos { get; set; }
+    public DbSet<FormaDePagamento> FormasDePagamento { get; set; }
     public DbSet<Produto> Produtos { get; set; }
     public DbSet<Pedido> Pedidos { get; set; }
 
