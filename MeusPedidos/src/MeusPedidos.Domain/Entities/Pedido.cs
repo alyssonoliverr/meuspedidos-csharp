@@ -1,5 +1,6 @@
 ﻿using MeusPedidos.Domain.Enums;
 using MeusPedidos.Domain.Exceptions;
+using System.Data;
 
 namespace MeusPedidos.Domain.Entities;
 
@@ -25,13 +26,24 @@ public class Pedido : Entity
         DataHoraCriacao = DateTime.UtcNow;
     }
 
-    public static Pedido Criar(Guid clienteId, Guid formaDePagamentoId)
+    public static Pedido Criar(Guid clienteId, Guid formaDePagamentoId, List<ItemPedido> itens)
     {
         if (clienteId == Guid.Empty)
             throw new DomainException("O ID do cliente é obrigatório.");
         if (formaDePagamentoId == Guid.Empty)
             throw new DomainException("O ID da forma de pagamento é obrigatório.");
-        return new Pedido(clienteId, formaDePagamentoId);
+        var pedido = new Pedido(clienteId, formaDePagamentoId);
+
+        if (itens is null ||!itens.Any())
+        {
+            throw new DomainException("Pedido deve conter pelo menos um item.");
+        }
+
+        foreach (var item in itens)
+        {
+            pedido.AdicionarItem(Guid.NewGuid(), item.Quantidade, item.ValorUnitario);
+        }
+        return pedido;
     }
 
     public void AdicionarItem(Guid produtoId, int quantidade, decimal valorUnitario)
@@ -70,4 +82,5 @@ public class Pedido : Entity
         if (Status != PedidoStatus.Aberta)
             throw new DomainException("Pedido não está aberto.");
     }
+    
 }
