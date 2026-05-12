@@ -36,12 +36,12 @@ public class ItemPedido : Entity
     private static void ValidarQuantidade(int quantidade)
     {
         if (quantidade <= 0)
-            throw new DomainException("Quantidade deve ser maior que zero.");
+            throw new DomainException("Quantidade do item deve ser maior que zero.");
     }
 
     private static void ValidarValorUnitario(decimal valorUnitario)
     {
         if (valorUnitario <= 0)
-            throw new DomainException("Valor unitário deve ser maior que zero.");
+            throw new DomainException("Valor unitário do item deve ser maior que zero.");
     }
 }

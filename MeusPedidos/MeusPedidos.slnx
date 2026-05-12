@@ -6,5 +6,7 @@
     <Project Path="src/MeusPedidos.Domain/MeusPedidos.Domain.csproj" />
     <Project Path="src/MeusPedidos.Infrastructure/MeusPedidos.Infrastructure.csproj" Id="cf32f9d7-5288-4882-9830-e57efe5cd316" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/MeusPedidos.Tests/MeusPedidos.Domain.Tests.csproj" Id="17f17047-b539-4565-8f16-694454fcb3e7" />
+  </Folder>
 </Solution>
