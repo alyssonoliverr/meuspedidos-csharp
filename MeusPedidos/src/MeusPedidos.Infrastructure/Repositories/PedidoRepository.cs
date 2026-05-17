@@ -35,4 +35,9 @@ public class PedidoRepository : IPedidoRepository
         _context.Pedidos.Update(pedido);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<Pedido>> ListarTodosAsync(CancellationToken cancellationToken = default)
+    {
+        return await _context.Pedidos.Include(p => p.Itens).ToListAsync(cancellationToken);
+    }
 }

@@ -1,4 +1,8 @@
+using MeusPedidos.Application.UseCases.Pedidos.CancelarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.CriarPedido;
+using MeusPedidos.Application.UseCases.Pedidos.ListarPedido;
+using MeusPedidos.Application.UseCases.Pedidos.ObterPedidoPorId;
+using MeusPedidos.Application.UseCases.Pedidos.PagarPedido;
 using MeusPedidos.Domain.Interfaces;
 using MeusPedidos.Infrastructure.Persistence;
 using MeusPedidos.Infrastructure.Repositories;
@@ -15,6 +19,11 @@ builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IFormaDePagamentorRepository, FormaDePagamentoRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<CriarPedidoHandler>();
+builder.Services.AddScoped<ListarPedidosHandler>();
+builder.Services.AddScoped<ObterPedidoPorIdHandler>();
+builder.Services.AddScoped<PagarPedidoHandler>();
+builder.Services.AddScoped<CancelarPedidoHandler>();
+
 
 // Add services to the container.
 
