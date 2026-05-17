@@ -16,7 +16,9 @@ public class Pedido : Entity
     public decimal ValorTotal => ValorTotalProdutos - ValorDesconto;
     public DateTime DataHoraCriacao { get; protected set; }
 
-    protected Pedido() { }
+    protected Pedido()
+    {
+    }
 
     private Pedido(Guid clienteId, Guid formaDePagamentoId)
     {
@@ -34,7 +36,7 @@ public class Pedido : Entity
             throw new DomainException("O ID da forma de pagamento é obrigatório.");
         var pedido = new Pedido(clienteId, formaDePagamentoId);
 
-        if (itens is null ||!itens.Any())
+        if (itens is null || !itens.Any())
         {
             throw new DomainException("Pedido deve conter pelo menos um item.");
         }
@@ -43,6 +45,7 @@ public class Pedido : Entity
         {
             pedido.AdicionarItem(Guid.NewGuid(), item.Quantidade, item.ValorUnitario);
         }
+
         return pedido;
     }
 
@@ -82,5 +85,4 @@ public class Pedido : Entity
         if (Status != PedidoStatus.Aberta)
             throw new DomainException("Pedido não está aberto.");
     }
-    
 }
