@@ -1,4 +1,4 @@
-﻿
+﻿using MeusPedidos.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using MeusPedidos.Domain.Interfaces;
 using MeusPedidos.Infrastructure.Persistence;
@@ -8,6 +8,7 @@ namespace MeusPedidos.Infrastructure.Repositories;
 public class ProdutoRepository : IProdutoRepository
 {
     private readonly AppDbContext _context;
+
     public ProdutoRepository(AppDbContext context)
     {
         _context = context;
@@ -27,6 +28,7 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<Produto?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _context.Produtos.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+        return await _context.Produtos
+            .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
     }
 }

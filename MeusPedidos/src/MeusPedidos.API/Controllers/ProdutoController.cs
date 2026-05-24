@@ -1,4 +1,5 @@
-﻿using MeusPedidos.Domain.Interfaces;
+﻿using MeusPedidos.Domain.Entities;
+using MeusPedidos.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MeusPedidos.API.Controllers;

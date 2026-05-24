@@ -59,7 +59,7 @@ public class PedidosController : ControllerBase
 
         if (pedido is null)
         {
-            NotFound();
+            return NotFound();
         }
 
         return Ok(pedido);

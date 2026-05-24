@@ -1,8 +1,8 @@
 # MeusPedidos
 
-Projeto de estudo para desenvolvimento de uma API de pedidos com .NET, usando uma estrutura simples em camadas e regras de domínio aplicadas nas entidades principais.
+Projeto de estudo para desenvolvimento de uma API de pedidos com .NET, usando uma estrutura simples em camadas e regras de dominio aplicadas nas entidades principais.
 
-O objetivo é construir a API de forma incremental: primeiro a modelagem do domínio, depois os endpoints, persistência com banco de dados e, por fim, o fluxo de criação, pagamento e cancelamento de pedidos.
+O objetivo e construir a API de forma incremental: primeiro a modelagem do dominio, depois os endpoints, persistencia com banco de dados e, por fim, o fluxo de criacao, pagamento e cancelamento de pedidos.
 
 ## O que o projeto faz
 
@@ -11,12 +11,12 @@ A API permite trabalhar com os principais dados de um fluxo de pedidos:
 - Cadastro e consulta de clientes
 - Cadastro e consulta de produtos
 - Cadastro e consulta de formas de pagamento
-- Criação e listagem de pedidos
-- Consulta de pedido por ID
+- Criacao e listagem de pedidos
+- Consulta de pedido por id
 - Pagamento de pedido
 - Cancelamento de pedido
 
-Este projeto não possui interface gráfica. O foco é o backend, a organização do domínio e a prática de boas decisões de arquitetura.
+Este projeto nao possui interface grafica. O foco e o backend, a organizacao do dominio e a pratica de boas decisoes de arquitetura.
 
 ## Tecnologias utilizadas
 
@@ -33,13 +33,13 @@ Este projeto não possui interface gráfica. O foco é o backend, a organizaçã
 
 ```text
 src/
-  MeusPedidos.API/              Controllers, configuração da API e Swagger
-  MeusPedidos.Application/      Casos de uso da aplicação
-  MeusPedidos.Domain/           Entidades, enums, interfaces e exceções de domínio
+  MeusPedidos.API/              Controllers, configuracao da API e Swagger
+  MeusPedidos.Application/      Casos de uso da aplicacao
+  MeusPedidos.Domain/           Entidades, enums, interfaces e excecoes de dominio
   MeusPedidos.Infrastructure/   DbContext, migrations e repositories
 
 tests/
-  MeusPedidos.Tests/            Testes unitários do domínio
+  MeusPedidos.Tests/            Testes unitarios do dominio
 
 docs/
   modelagem-api-pedidos-v1.pdf  Documento de modelagem inicial
@@ -47,31 +47,31 @@ docs/
 
 ## Camadas
 
-O projeto segue uma separação simples de responsabilidades:
+O projeto segue uma separacao simples de responsabilidades:
 
-- **API**: recebe as requisições HTTP e chama os casos de uso ou repositories.
-- **Application**: concentra os fluxos da aplicação, como criar, listar, pagar e cancelar pedidos.
-- **Domain**: contém as regras principais do negócio, entidades e validações.
-- **Infrastructure**: cuida da persistência com Entity Framework Core e PostgreSQL.
+- **API**: recebe as requisicoes HTTP e chama os casos de uso ou repositories.
+- **Application**: concentra os fluxos da aplicacao, como criar, listar, pagar e cancelar pedidos.
+- **Domain**: contem as regras principais do negocio, entidades e validacoes.
+- **Infrastructure**: cuida da persistencia com Entity Framework Core e PostgreSQL.
 
-## Modelagem do domínio
+## Modelagem do dominio
 
-A modelagem inicial está documentada em [`docs/modelagem-api-pedidos-v1.pdf`](docs/modelagem-api-pedidos-v1.pdf).
+A modelagem inicial esta documentada em [`docs/modelagem-api-pedidos-v1.pdf`](docs/modelagem-api-pedidos-v1.pdf).
 
-As entidades principais são:
+As entidades principais sao:
 
 - **Cliente**: representa quem faz o pedido.
-- **Produto**: representa os itens disponíveis para venda.
+- **Produto**: representa os itens disponiveis para venda.
 - **FormaDePagamento**: representa a forma usada para pagar o pedido.
 - **Pedido**: representa a compra feita por um cliente.
 - **ItemPedido**: representa cada produto dentro de um pedido.
 
 ### Relacionamentos
 
-- Um **Cliente** pode ter vários **Pedidos**.
-- Um **Pedido** possui vários **ItensPedido**.
-- Um **Produto** pode aparecer em vários **ItensPedido**.
-- Uma **FormaDePagamento** pode ser usada em vários **Pedidos**.
+- Um **Cliente** pode ter varios **Pedidos**.
+- Um **Pedido** possui varios **ItensPedido**.
+- Um **Produto** pode aparecer em varios **ItensPedido**.
+- Uma **FormaDePagamento** pode ser usada em varios **Pedidos**.
 
 ```mermaid
 erDiagram
@@ -131,7 +131,7 @@ flowchart LR
     UC6((Consultar forma de pagamento))
     UC7((Criar pedido))
     UC8((Listar pedidos))
-    UC9((Consultar pedido por ID))
+    UC9((Consultar pedido por id))
     UC10((Pagar pedido))
     UC11((Cancelar pedido))
 
@@ -148,21 +148,21 @@ flowchart LR
     Usuario --> UC11
 ```
 
-## Regras de negócio
+## Regras de negocio
 
-Algumas regras já aplicadas no domínio:
+Algumas regras ja aplicadas no dominio:
 
-- Cliente deve ter nome obrigatório.
-- Produto deve ter descrição, preço maior que zero e estoque não negativo.
-- Pedido deve ter cliente válido.
-- Pedido deve ter forma de pagamento válida.
+- Cliente deve ter nome obrigatorio.
+- Produto deve ter descricao, preco maior que zero e estoque nao negativo.
+- Pedido deve ter cliente valido.
+- Pedido deve ter forma de pagamento valida.
 - Pedido deve conter pelo menos um item.
 - Item do pedido deve ter quantidade maior que zero.
-- Item do pedido deve ter valor unitário maior que zero.
-- O total do pedido é calculado a partir dos itens.
-- Desconto não pode ser negativo nem maior que o total dos produtos.
-- Pedido pago ou cancelado não pode ser alterado.
-- Pedido já cancelado não pode ser cancelado novamente.
+- Item do pedido deve ter valor unitario maior que zero.
+- O total do pedido e calculado a partir dos itens.
+- Desconto nao pode ser negativo nem maior que o total dos produtos.
+- Pedido pago ou cancelado nao pode ser alterado.
+- Pedido ja cancelado nao pode ser cancelado novamente.
 
 ## Endpoints principais
 
@@ -194,7 +194,7 @@ Algumas regras já aplicadas no domínio:
 
 ## Como executar
 
-Configure a string de conexão com o PostgreSQL em:
+Configure a string de conexao com o PostgreSQL em:
 
 ```text
 src/MeusPedidos.API/appsettings.json
@@ -214,7 +214,7 @@ dotnet ef database update --project src/MeusPedidos.Infrastructure --startup-pro
 dotnet run --project src/MeusPedidos.API
 ```
 
-Com a API em execução, acesse o Swagger em:
+Com a API em execucao, acesse o Swagger em:
 
 ```text
 http://localhost:<porta>/swagger
@@ -228,8 +228,8 @@ Para executar os testes:
 dotnet test
 ```
 
-Os testes atuais cobrem regras básicas da entidade `Pedido`, seguindo a ideia de Arrange, Act e Assert.
+Os testes atuais cobrem regras basicas da entidade `Pedido`, seguindo a ideia de Arrange, Act e Assert.
 
-## Observação
+## Observacao
 
-Este é um projeto de estudo. A ideia principal é praticar modelagem, organização em camadas, persistência com EF Core, regras de negócio e testes unitários básicos.
+Este e um projeto de estudo. A ideia principal e praticar modelagem, organizacao em camadas, persistencia com EF Core, regras de negocio e testes unitarios basicos.
