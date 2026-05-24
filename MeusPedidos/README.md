@@ -54,6 +54,20 @@ O projeto segue uma separacao simples de responsabilidades:
 - **Domain**: contem as regras principais do negocio, entidades e validacoes.
 - **Infrastructure**: cuida da persistencia com Entity Framework Core e PostgreSQL.
 
+### Observacao sobre casos de uso e repositories
+
+Neste projeto, os casos de uso foram aplicados principalmente ao agregado `Pedido`,
+pois ele concentra as regras de negocio mais importantes do dominio: criacao,
+pagamento, cancelamento, itens e calculo de valores.
+
+Os controllers de `Cliente`, `Produto` e `FormaDePagamento` ainda utilizam
+repositories diretamente de forma proposital, para manter o projeto simples nesta
+etapa de estudo. A intencao e evoluir esses fluxos futuramente para casos de uso
+proprios, conforme novas regras de negocio forem surgindo.
+
+Essa decisao foi tomada para dar enfase ao agregado principal da aplicacao sem
+adicionar complexidade desnecessaria aos cadastros mais simples.
+
 ## Modelagem do dominio
 
 A modelagem inicial esta documentada em [`docs/modelagem-api-pedidos-v1.pdf`](docs/modelagem-api-pedidos-v1.pdf).
