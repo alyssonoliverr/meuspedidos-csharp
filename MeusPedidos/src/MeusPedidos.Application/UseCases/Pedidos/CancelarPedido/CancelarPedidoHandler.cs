@@ -16,6 +16,8 @@ public class CancelarPedidoHandler
         var pedido = await _pedidoRepository.ObterPorIdAsync(command.PedidoId, cancellationToken);
 
         if (pedido is null) return false;
+        
+        pedido.Cancelar();
 
         await _pedidoRepository.AtualizarAsync(pedido, cancellationToken);
         return true;
