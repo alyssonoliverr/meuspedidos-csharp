@@ -2,7 +2,7 @@
 
 namespace MeusPedidos.Domain.Interfaces;
 
-public interface IFormaDePagamentorRepository
+public interface IFormaDePagamentoRepository
 {
     Task AdicionarAsync(FormaDePagamento formaDePagamento, CancellationToken cancellationToken);
     Task<FormaDePagamento?> ObterPorIdAsync(Guid id, CancellationToken cancellationToken);

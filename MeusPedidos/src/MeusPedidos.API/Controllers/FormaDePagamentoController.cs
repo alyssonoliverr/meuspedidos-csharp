@@ -8,8 +8,8 @@ namespace MeusPedidos.API.Controllers;
 [Route("api/[controller]")]
 public class FormaDePagamentoController : Controller
 {
-    private readonly IFormaDePagamentorRepository _formaDePagamentoRepository;
-    public FormaDePagamentoController(IFormaDePagamentorRepository formaDePagamentoRepository)
+    private readonly IFormaDePagamentoRepository _formaDePagamentoRepository;
+    public FormaDePagamentoController(IFormaDePagamentoRepository formaDePagamentoRepository)
     {
         _formaDePagamentoRepository = formaDePagamentoRepository;
     }

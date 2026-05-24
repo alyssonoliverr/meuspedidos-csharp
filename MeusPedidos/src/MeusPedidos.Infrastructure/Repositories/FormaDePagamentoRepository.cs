@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MeusPedidos.Infrastructure.Repositories;
 
-public class FormaDePagamentoRepository : IFormaDePagamentorRepository
+public class FormaDePagamentoRepository : IFormaDePagamentoRepository
 {
     private readonly AppDbContext _context;
 

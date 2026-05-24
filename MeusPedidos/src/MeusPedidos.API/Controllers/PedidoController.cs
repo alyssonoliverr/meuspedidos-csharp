@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using MeusPedidos.Application.UseCases.Pedidos.CancelarPedido;
+﻿using MeusPedidos.Application.UseCases.Pedidos.CancelarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.CriarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.ListarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.ObterPedidoPorId;

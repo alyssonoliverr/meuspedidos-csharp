@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IPedidoRepository, PedidoRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
-builder.Services.AddScoped<IFormaDePagamentorRepository, FormaDePagamentoRepository>();
+builder.Services.AddScoped<IFormaDePagamentoRepository, FormaDePagamentoRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped<CriarPedidoHandler>();
 builder.Services.AddScoped<ListarPedidosHandler>();
