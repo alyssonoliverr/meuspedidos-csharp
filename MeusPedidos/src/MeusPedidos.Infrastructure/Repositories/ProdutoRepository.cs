@@ -1,4 +1,5 @@
 ﻿
+using MeusPedidos.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using MeusPedidos.Domain.Interfaces;
 using MeusPedidos.Infrastructure.Persistence;
