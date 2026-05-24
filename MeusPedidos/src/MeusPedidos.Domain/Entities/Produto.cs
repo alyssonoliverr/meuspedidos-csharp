@@ -1,8 +1,8 @@
-﻿using MeusPedidos.Domain.Entities;
-using MeusPedidos.Domain.Exceptions;
+﻿using MeusPedidos.Domain.Exceptions;
 
- 
-namespace   MeusPedidos.Domain.Entities;
+
+namespace MeusPedidos.Domain.Entities;
+
 public class Produto : ActivableEntity
 {
     public string Descricao { get; protected set; } = string.Empty;
@@ -11,7 +11,9 @@ public class Produto : ActivableEntity
 
     public int Estoque { get; protected set; }
 
-    protected Produto() { }
+    protected Produto()
+    {
+    }
 
     public Produto(string descricao, decimal preco, int estoque)
     {

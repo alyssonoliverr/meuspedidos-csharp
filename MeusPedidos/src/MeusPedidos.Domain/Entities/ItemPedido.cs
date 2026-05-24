@@ -1,6 +1,7 @@
-﻿using MeusPedidos.Domain.Entities;
-using MeusPedidos.Domain.Exceptions;
+﻿using MeusPedidos.Domain.Exceptions;
+
 namespace MeusPedidos.Domain.Entities;
+
 public class ItemPedido : Entity
 {
     public Guid ProdutoId { get; private set; }
@@ -9,7 +10,9 @@ public class ItemPedido : Entity
 
     public decimal ValorTotal => Quantidade * ValorUnitario;
 
-    protected ItemPedido() { }
+    protected ItemPedido()
+    {
+    }
 
     public ItemPedido(Guid produtoId, int quantidade, decimal valorUnitario)
     {
