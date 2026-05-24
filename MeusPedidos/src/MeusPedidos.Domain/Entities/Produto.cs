@@ -1,6 +1,8 @@
 ﻿using MeusPedidos.Domain.Entities;
 using MeusPedidos.Domain.Exceptions;
 
+ 
+namespace   MeusPedidos.Domain.Entities;
 public class Produto : ActivableEntity
 {
     public string Descricao { get; protected set; } = string.Empty;
