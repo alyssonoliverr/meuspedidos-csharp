@@ -5,6 +5,7 @@ namespace MeusPedidos.Domain.Entities;
 
 public class Pedido : Entity
 {
+    public int NumeroPedido { get; private set; }
     public Guid ClienteId { get; protected set; }
     public Guid FormaDePagamentoId { get; protected set; }
     public PedidoStatus Status { get; protected set; }
