@@ -2,6 +2,7 @@
 using MeusPedidos.Application.UseCases.Pedidos.CriarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.ListarPedido;
 using MeusPedidos.Application.UseCases.Pedidos.ObterPedidoPorId;
+using MeusPedidos.Application.UseCases.Pedidos.ObterPedidoPorNumero;
 using MeusPedidos.Application.UseCases.Pedidos.PagarPedido;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,16 +17,18 @@ public class PedidosController : ControllerBase
     private readonly ObterPedidoPorIdHandler _obterPorIdHandler;
     private readonly PagarPedidoHandler _pagarHandler;
     private readonly CancelarPedidoHandler _cancelarHandler;
+    private readonly ObterPedidoPorNumeroHandler _obterPorNumeroHandler;
 
     public PedidosController(CriarPedidoHandler criarHandler, ListarPedidosHandler listarHandler,
         ObterPedidoPorIdHandler obterPorIdHandler, PagarPedidoHandler pagarHandler,
-        CancelarPedidoHandler cancelarHandler)
+        CancelarPedidoHandler cancelarHandler, ObterPedidoPorNumeroHandler obterPorNumeroHandler)
     {
         _criarHandler = criarHandler;
         _listarHandler = listarHandler;
         _obterPorIdHandler = obterPorIdHandler;
         _pagarHandler = pagarHandler;
         _cancelarHandler = cancelarHandler;
+        _obterPorNumeroHandler = obterPorNumeroHandler;
     }
 
     [HttpPost]
@@ -46,7 +49,7 @@ public class PedidosController : ControllerBase
         return Ok(pedidos);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id, CancellationToken cancellationToken)
     {
         var query = new ObterPedidoPorIdQuery
@@ -64,7 +67,26 @@ public class PedidosController : ControllerBase
         return Ok(pedido);
     }
 
-    [HttpPost("{id}/pagar")]
+    [HttpGet("numero/{numeroPedido:int}")]
+    public async Task<IActionResult> GetByNumero(int numeroPedido, CancellationToken cancellationToken)
+    {
+        var query = new ObterPedidoPorNumeroQuery()
+        {
+            NumeroPedido = numeroPedido
+        };
+
+        var pedido = await _obterPorNumeroHandler.Handle(query, cancellationToken);
+
+        if (pedido is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(pedido);
+    }
+
+
+    [HttpPost("{id:guid}/pagar")]
     public async Task<IActionResult> Pagar(Guid id, CancellationToken cancellationToken)
     {
         var command = new PagarPedidoCommand
@@ -77,7 +99,7 @@ public class PedidosController : ControllerBase
         return NoContent();
     }
 
-    [HttpPost("{id}/cancelar")]
+    [HttpPost("{id:guid}/cancelar")]
     public async Task<IActionResult> Cancelar(Guid id, CancellationToken cancellationToken)
     {
         var command = new CancelarPedidoCommand

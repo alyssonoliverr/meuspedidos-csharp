@@ -22,31 +22,6 @@ namespace MeusPedidos.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ItemPedido", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid?>("PedidoId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProdutoId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Quantidade")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("ValorUnitario")
-                        .HasColumnType("numeric");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PedidoId");
-
-                    b.ToTable("ItemPedido");
-                });
-
             modelBuilder.Entity("MeusPedidos.Domain.Entities.Cliente", b =>
                 {
                     b.Property<Guid>("Id")
@@ -80,6 +55,31 @@ namespace MeusPedidos.Infrastructure.Migrations
                     b.ToTable("FormasDePagamento");
                 });
 
+            modelBuilder.Entity("MeusPedidos.Domain.Entities.ItemPedido", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("PedidoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ProdutoId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("ValorUnitario")
+                        .HasColumnType("numeric");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("ItemPedido");
+                });
+
             modelBuilder.Entity("MeusPedidos.Domain.Entities.Pedido", b =>
                 {
                     b.Property<Guid>("Id")
@@ -95,6 +95,12 @@ namespace MeusPedidos.Infrastructure.Migrations
                     b.Property<Guid>("FormaDePagamentoId")
                         .HasColumnType("uuid");
 
+                    b.Property<int>("NumeroPedido")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("NumeroPedido"));
+
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
@@ -107,10 +113,13 @@ namespace MeusPedidos.Infrastructure.Migrations
 
                     b.HasIndex("FormaDePagamentoId");
 
+                    b.HasIndex("NumeroPedido")
+                        .IsUnique();
+
                     b.ToTable("Pedidos", (string)null);
                 });
 
-            modelBuilder.Entity("Produto", b =>
+            modelBuilder.Entity("MeusPedidos.Domain.Entities.Produto", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,7 +143,7 @@ namespace MeusPedidos.Infrastructure.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("ItemPedido", b =>
+            modelBuilder.Entity("MeusPedidos.Domain.Entities.ItemPedido", b =>
                 {
                     b.HasOne("MeusPedidos.Domain.Entities.Pedido", null)
                         .WithMany("Itens")

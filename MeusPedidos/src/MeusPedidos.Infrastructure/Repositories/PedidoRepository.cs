@@ -24,6 +24,18 @@ public class PedidoRepository : IPedidoRepository
             .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
     }
 
+    public async Task<Pedido?> ObterPorNumeroPedido
+    (
+        int numeroPedido,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return await _context
+            .Pedidos.Include(p => p.Itens)
+            .FirstOrDefaultAsync(p => p.NumeroPedido == numeroPedido, cancellationToken);
+    }
+
+
     public async Task AdicionarAsync(Pedido pedido, CancellationToken cancellationToken = default)
     {
         await _context.Pedidos.AddAsync(pedido, cancellationToken);
